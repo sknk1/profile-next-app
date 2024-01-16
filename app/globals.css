@@ -2,26 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  p {
+    @apply text-base;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  @screen md {
+    h1 {
+      @apply text-5xl;
+    }
+    h2 {
+      @apply text-4xl;
+    }
+    h3 {
+      @apply text-2xl;
+    }
+  }
+
+  @screen lg {
+    h1 {
+      @apply text-6xl;
+    }
+    h2 {
+      @apply text-5xl;
+    }
+    h3 {
+      @apply text-3xl;
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  ::-moz-selection { /* Code for Firefox */
+    /* background: @apply bg-yellow-custom; */
+    @apply bg-yellow-custom text-black;
+  }
+  
+  ::selection {
+    /* background: @apply bg-yellow-custom; */
+    @apply bg-yellow-custom text-black;
+  }
+
+  .profile-image {
+    width: 230px !important;
+    height: 230px !important;
+    position: absolute;
+    top: 49% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  #about-section, #contact-section, #portofolios-section {
+    scroll-margin-block-start: 0;
+  }
+
+  .portofolio-desc{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
+  .custom-button-1{
+    @apply rounded bg-yellow-custom px-4 py-3 font-bold text-black transition-all hover:scale-110;
+  }
+
+  .custom-button-2{
+    @apply rounded bg-gray-custom px-4 py-3 font-bold transition-all hover:scale-110;
+  }
+
+  @screen md {
+    #about-section {
+      scroll-margin-block-start: 100px;
+    }
+
+    #contact-section, #portofolios-section {
+      scroll-margin-block-start: 50px;
+    }
+  }
+
+  @screen lg {
+    .profile-image {
+      width: 270px !important;
+      height: 270px !important;
+    }
+
+    #about-section{
+      scroll-margin-block-start: 1rem;
+    }
+
+    #contact-section, #portofolios-section {
+      scroll-margin-block-start: 0px;
+    }
+  }
+
+  @screen xl {
+    .profile-image {
+      width: 330px !important;
+      height: 330px !important;
+    }
+  }
+
+}
+
+@layer utilities {
 }
